@@ -53,7 +53,7 @@ If self deployed:
 `-Djdk.tls.client.protocols=TLSv1.2`
 * By starting the application you will be able to hit the application on port 8080.
 
-#### **Docker**
+##### **Docker**
 * Please update hardecoded values in dockerfile with proper mongo config values.
 Note: hardcoded for demonstration purposes. Generally these are injected at deploy time using some sort of secrets manager.
 * Build the docker image using the following command in application root directory.
@@ -63,5 +63,6 @@ Note: hardcoded for demonstration purposes. Generally these are injected at depl
 
 #### **Jacoco Code Coverage**
 
-
 ![Screen Shot 2023-02-06 at 11 55 25 PM](https://user-images.githubusercontent.com/124640067/217152428-aac7d417-f572-43ec-a4af-c26516d58e33.png)
+
+
