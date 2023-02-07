@@ -61,7 +61,9 @@ Note: hardcoded for demonstration purposes. Generally these are injected at depl
 * Run the docker image using the following command.
 `docker run -d -p 8080:8080 -t customer-rewards-002`
 
-    
+#### **Jacoco Code Coverage**
+
+
 
     
 
