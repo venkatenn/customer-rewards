@@ -59,7 +59,7 @@ Note: hardcoded for demonstration purposes. Generally these are injected at depl
 * Build the docker image using the following command in application root directory.
 `docker build -t "customer-rewards-001" .`
 * Run the docker image using the following command.
-`docker run -d -p 8080:8080 -t customer-rewards-002`
+`docker run -d -p 8080:8080 -t customer-rewards-001`
 
 #### **Jacoco Code Coverage**
 
