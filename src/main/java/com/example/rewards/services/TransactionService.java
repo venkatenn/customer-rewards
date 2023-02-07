@@ -3,7 +3,11 @@ package com.example.rewards.services;
 import com.example.rewards.models.Transaction;
 import java.util.List;
 
-/** @author Venkat E */
+/**
+ * Transaction Service Interface
+ *
+ * @author Venkat E
+ */
 public interface TransactionService {
 
   /**

@@ -30,6 +30,11 @@ class RewardControllerTest {
   @MockBean RewardService rewardService;
   @Autowired private MockMvc mockMvc;
 
+  /**
+   * Test to get all rewards api.
+   *
+   * @throws Exception
+   */
   @Test
   void getAllRewards() throws Exception {
     String rewardId1 = "reward-test-id";
@@ -54,6 +59,11 @@ class RewardControllerTest {
     verify(rewardService, times(1)).getAllRewards();
   }
 
+  /**
+   * Test to get reward by id api.
+   *
+   * @throws Exception
+   */
   @Test
   void getRewardById() throws Exception {
     String rewardId1 = "reward-test-id";
@@ -73,6 +83,11 @@ class RewardControllerTest {
     verify(rewardService, times(1)).getRewardById(isA(String.class));
   }
 
+  /**
+   * Test to get reward using transaction id api.
+   *
+   * @throws Exception
+   */
   @Test
   void getRewardByTransactionId() throws Exception {
     String rewardId1 = "reward-test-id";
@@ -95,6 +110,11 @@ class RewardControllerTest {
     verify(rewardService, times(1)).getAllRewardByTransactionId(isA(String.class));
   }
 
+  /**
+   * Test to get rewards of a customer api.
+   *
+   * @throws Exception
+   */
   @Test
   void getRewardsByCustomerId() throws Exception {
     String rewardId1 = "reward-test-id";
@@ -108,8 +128,8 @@ class RewardControllerTest {
     reward1.setPoints(points1);
     reward1.setTransactionId(transactionId1);
     reward1.setDateTime(rewardDateTime1);
-    when(rewardService.getAllRewardsByCustomerId(rewardId1)).thenReturn(
-        Collections.singletonList(reward1));
+    when(rewardService.getAllRewardsByCustomerId(rewardId1))
+        .thenReturn(Collections.singletonList(reward1));
 
     mockMvc
         .perform(get("/reward/customer/{customerId}", customerId1))

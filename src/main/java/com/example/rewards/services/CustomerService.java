@@ -6,7 +6,11 @@ import com.example.rewards.models.CustomerTotalRewardsReport;
 import java.time.Month;
 import java.util.List;
 
-/** @author Venkat E */
+/**
+ * CusomerService Interface
+ *
+ * @author Venkat E
+ */
 public interface CustomerService {
 
   /**

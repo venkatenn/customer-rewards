@@ -38,8 +38,9 @@ class TransactionServiceImplTest {
     MockitoAnnotations.openMocks(this);
   }
 
+  /** Test to create a transaction for a non existing customer. */
   @Test
-  void createTransactionCase1() {
+  void createTransactionForNonExistingCustomer() {
     String transactionId = "transactionId";
     String customerId = "customerId";
     BigDecimal amount = new BigDecimal(10);
@@ -61,8 +62,9 @@ class TransactionServiceImplTest {
     verify(customerRepository, times(1)).findByCustomerId(isA(String.class));
   }
 
+  /** Test to create a transaction */
   @Test
-  void createTransactionCase2() {
+  void createTransaction() {
     String transactionId = "transactionId";
     String customerId = "customerId";
     BigDecimal amount = new BigDecimal(120);
@@ -98,6 +100,7 @@ class TransactionServiceImplTest {
     assertEquals(new BigDecimal(90), rewardResult.getPoints());
   }
 
+  /** Test to get all transactions. */
   @Test
   void getAllTransactions() {
     String transactionId = "transactionId";
@@ -118,8 +121,9 @@ class TransactionServiceImplTest {
     verify(transactionRepository, times(1)).findAll();
   }
 
+  /** Test to get transaction for a non existing id. */
   @Test
-  void getTransactionByIdCase1() {
+  void getTransactionByIdForNonExistingTransaction() {
     String transactionId = "transactionId";
     Optional<Transaction> transactionOptional = Optional.empty();
     when(transactionRepository.findByTransactionId(transactionId)).thenReturn(transactionOptional);
@@ -131,8 +135,9 @@ class TransactionServiceImplTest {
     }
   }
 
+  /** Test to get a transaction using Id. */
   @Test
-  void getTransactionByIdCase2() {
+  void getTransactionById() {
     String transactionId = "transactionId";
     String customerId = "customerId";
     BigDecimal amount = new BigDecimal(120);
@@ -149,8 +154,9 @@ class TransactionServiceImplTest {
     verify(transactionRepository, times(1)).findByTransactionId(isA(String.class));
   }
 
+  /** Test to update a transaction for non existing. */
   @Test
-  void updateTransactionCase1() {
+  void updateTransactionForNonExisting() {
     String transactionId = "transactionId";
     String customerId = "customerId";
     BigDecimal amount = new BigDecimal(120);
@@ -171,8 +177,9 @@ class TransactionServiceImplTest {
     verify(transactionRepository, times(1)).findByTransactionId(isA(String.class));
   }
 
+  /** Test to update a transaction for non existing reward. */
   @Test
-  void updateTransactionCase2() {
+  void updateTransactionForNonExistingReward() {
     String transactionId = "transactionId";
     String customerId = "customerId";
     BigDecimal amount = new BigDecimal(120);
@@ -205,8 +212,9 @@ class TransactionServiceImplTest {
     verify(rewardRepository, times(1)).findByTransactionId(isA(String.class));
   }
 
+  /** Test to update a transaction. */
   @Test
-  void updateTransactionCase3() {
+  void updateTransaction() {
     String transactionId = "transactionId";
     String customerId = "customerId";
     BigDecimal amount = new BigDecimal(120);
@@ -248,8 +256,9 @@ class TransactionServiceImplTest {
     assertEquals(new BigDecimal(90), rewardResult.getPoints());
   }
 
+  /** Test to delete a transaction for non existing Id. */
   @Test
-  void deleteTransactionCase1() {
+  void deleteTransactionForNonExistingId() {
     String transactionId = "transactionId";
     Optional<Transaction> transactionOptional = Optional.empty();
     when(transactionRepository.findByTransactionId(transactionId)).thenReturn(transactionOptional);
@@ -262,8 +271,9 @@ class TransactionServiceImplTest {
     verify(transactionRepository, times(1)).findByTransactionId(isA(String.class));
   }
 
+  /** Test to delete a transaction for non existing reward. */
   @Test
-  void deleteTransactionCase2() {
+  void deleteTransactionForNonExistingReward() {
     String transactionId = "transactionId";
     String customerId = "customerId";
     BigDecimal amount = new BigDecimal(120);
@@ -289,8 +299,9 @@ class TransactionServiceImplTest {
     verify(rewardRepository, times(1)).findByTransactionId(isA(String.class));
   }
 
+  /** Test to delete a transaction. */
   @Test
-  void deleteTransactionCase3() {
+  void deleteTransaction() {
     String transactionId = "transactionId";
     String customerId = "customerId";
     BigDecimal amount = new BigDecimal(120);
@@ -319,11 +330,13 @@ class TransactionServiceImplTest {
     verify(rewardRepository, times(1)).findByTransactionId(isA(String.class));
   }
 
+  /** Test to calculate rewards points based on transaction amounts. */
   @Test
   void calculateRewaredAmount() {
     assertEquals(new BigDecimal(0), transactionService.calculateRewaredAmount(null));
     assertEquals(new BigDecimal(0), transactionService.calculateRewaredAmount(new BigDecimal(0)));
     assertEquals(new BigDecimal(25), transactionService.calculateRewaredAmount(new BigDecimal(75)));
-    assertEquals(new BigDecimal(90), transactionService.calculateRewaredAmount(new BigDecimal(120)));
+    assertEquals(
+        new BigDecimal(90), transactionService.calculateRewaredAmount(new BigDecimal(120)));
   }
 }

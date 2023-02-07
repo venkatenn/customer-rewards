@@ -38,6 +38,7 @@ class CustomerServiceImplTest {
     MockitoAnnotations.openMocks(this);
   }
 
+  /** Test createing a customer. */
   @Test
   void createCustomer() {
     String customerId = "customerId";
@@ -53,8 +54,9 @@ class CustomerServiceImplTest {
     verify(customerRepository, times(1)).save(isA(Customer.class));
   }
 
+  /** Test updating a customer. */
   @Test
-  void updateCustomerCase1() {
+  void updateCustomer() {
     String customerId = "customerId";
     String firstName = "firstName";
     String lastName = "lastName";
@@ -70,8 +72,9 @@ class CustomerServiceImplTest {
     verify(customerRepository, times(1)).save(isA(Customer.class));
   }
 
+  /** Test case where we try to update a non existing customer. */
   @Test
-  void updateCustomerCase2() {
+  void updateCustomerForNonExistingCustomer() {
     String customerId = "customerId";
     String firstName = "firstName";
     String lastName = "lastName";
@@ -90,6 +93,7 @@ class CustomerServiceImplTest {
     verify(customerRepository, times(1)).findByCustomerId(isA(String.class));
   }
 
+  /** Test to check get all customers. */
   @Test
   void getAllCustomers() {
     String customerId = "customerId";
@@ -108,8 +112,9 @@ class CustomerServiceImplTest {
     verify(customerRepository, times(1)).findAll();
   }
 
+  /** Test to check get customer with Id. */
   @Test
-  void getCustomerByIdCase1() {
+  void getCustomerById() {
     String customerId = "customerId";
     String firstName = "firstName";
     String lastName = "lastName";
@@ -124,8 +129,9 @@ class CustomerServiceImplTest {
     verify(customerRepository, times(1)).findByCustomerId(isA(String.class));
   }
 
+  /** Test to check get customer with Id for a non existing customer. */
   @Test
-  void getCustomerByIdCase2() {
+  void getCustomerByIdForNonExistingCustomer() {
     String customerId = "customerId";
     String firstName = "firstName";
     String lastName = "lastName";
@@ -144,8 +150,9 @@ class CustomerServiceImplTest {
     verify(customerRepository, times(1)).findByCustomerId(isA(String.class));
   }
 
+  /** Test to get customer using his name. */
   @Test
-  void getCustomerByNameCase1() {
+  void getCustomerByName() {
     String customerId = "customerId";
     String firstName = "firstName";
     String lastName = "lastName";
@@ -162,8 +169,9 @@ class CustomerServiceImplTest {
         .findByFirstNameAndLastName(isA(String.class), isA(String.class));
   }
 
+  /** Test to get customer using name for a non existing customer. */
   @Test
-  void getCustomerByNameCase2() {
+  void getCustomerByNameForNonExistingCustomer() {
     String customerId = "customerId";
     String firstName = "firstName";
     String lastName = "lastName";
@@ -186,8 +194,9 @@ class CustomerServiceImplTest {
         .findByFirstNameAndLastName(isA(String.class), isA(String.class));
   }
 
+  /** Test to delete a customer using Id. */
   @Test
-  void deleteCustomerCase1() {
+  void deleteCustomer() {
     String customerId = "customerId";
     String firstName = "firstName";
     String lastName = "lastName";
@@ -202,6 +211,7 @@ class CustomerServiceImplTest {
     verify(customerRepository, times(1)).deleteByCustomerId(isA(String.class));
   }
 
+  /** Test to delete a non existing customer. */
   @Test
   void deleteCustomerCase2() {
     String customerId = "customerId";
@@ -222,8 +232,9 @@ class CustomerServiceImplTest {
     verify(customerRepository, times(1)).findByCustomerId(isA(String.class));
   }
 
+  /** Test to get customer total rewards for a non existing customer. */
   @Test
-  void getCustomerTotalRewardsCase1() {
+  void getCustomerTotalRewardsForNonExistingCustomer() {
     String customerId = "customerId";
     String firstName = "firstName";
     String lastName = "lastName";
@@ -242,8 +253,9 @@ class CustomerServiceImplTest {
     verify(customerRepository, times(1)).findByCustomerId(isA(String.class));
   }
 
+  /** Test to get customer total rewards when he does not have any rewards. */
   @Test
-  void getCustomerTotalRewardsCase2() {
+  void getCustomerTotalRewardsForNonExistingRewards() {
     String customerId = "customerId";
     String firstName = "firstName";
     String lastName = "lastName";
@@ -267,8 +279,9 @@ class CustomerServiceImplTest {
     verify(rewardRepository, times(1)).findByCustomerId(isA(String.class));
   }
 
+  /** Test to get total customer rewards. */
   @Test
-  void getCustomerTotalRewardsCase3() {
+  void getCustomerTotalRewards() {
     String customerId = "customerId";
     String firstName = "firstName";
     String lastName = "lastName";
@@ -315,8 +328,9 @@ class CustomerServiceImplTest {
     verify(rewardRepository, times(1)).findByCustomerId(isA(String.class));
   }
 
+  /** Test to get customer monthly rewards for a non existing customer. */
   @Test
-  void getCustomerRewardsForMonthCase1() {
+  void getCustomerRewardsForMonthForNonExistingCustomer() {
     Integer year = 2023;
     Month month = Month.JANUARY;
 
@@ -338,8 +352,9 @@ class CustomerServiceImplTest {
     verify(customerRepository, times(1)).findByCustomerId(isA(String.class));
   }
 
+  /** Test to get customer montly rewards for when he does not have any rewards. */
   @Test
-  void getCustomerRewardsForMonthCase2() {
+  void getCustomerRewardsForMonthForNonExistingRewards() {
     Integer year = 2023;
     Month month = Month.JANUARY;
     LocalDate from = LocalDate.of(year, month, 1);
@@ -371,8 +386,9 @@ class CustomerServiceImplTest {
         .findByDateTimeBetween(isA(LocalDate.class), isA(LocalDate.class));
   }
 
+  /** Test to get customer month rewards. */
   @Test
-  void getCustomerRewardsForMonthCase3() {
+  void getCustomerRewardsForMonth() {
     Integer year = 2023;
     Month month = Month.JANUARY;
     LocalDate from = LocalDate.of(year, month, 1);

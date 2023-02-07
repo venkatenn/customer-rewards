@@ -45,6 +45,11 @@ class CustomerControllerTest {
     WRITER = MAPPER.writer().withDefaultPrettyPrinter();
   }
 
+  /**
+   * Test to check get all customers api.
+   *
+   * @throws Exception
+   */
   @Test
   void getAllCustomers() throws Exception {
     String customerId = "customerId";
@@ -65,6 +70,11 @@ class CustomerControllerTest {
     verify(customerService, times(1)).getAllCustomers();
   }
 
+  /**
+   * Test to check get customer by id api.
+   *
+   * @throws Exception
+   */
   @Test
   void getCustomerById() throws Exception {
     String customerId = "customerId";
@@ -83,6 +93,11 @@ class CustomerControllerTest {
     verify(customerService, times(1)).getCustomerById(isA(String.class));
   }
 
+  /**
+   * Test to get customer by name api.
+   *
+   * @throws Exception
+   */
   @Test
   void getCustomerByFirstAndLastName() throws Exception {
     String customerId = "customerId";
@@ -101,6 +116,11 @@ class CustomerControllerTest {
     verify(customerService, times(1)).getCustomerByName(isA(String.class), isA(String.class));
   }
 
+  /**
+   * Test to create cutomer api.
+   *
+   * @throws Exception
+   */
   @Test
   void createCustomer() throws Exception {
     String customerId = "customerId";
@@ -119,6 +139,11 @@ class CustomerControllerTest {
     verify(customerService, times(1)).createCustomer(isA(Customer.class));
   }
 
+  /**
+   * Test to update customer api.
+   *
+   * @throws Exception
+   */
   @Test
   void updateCustomer() throws Exception {
     String customerId = "customerId";
@@ -140,6 +165,11 @@ class CustomerControllerTest {
     verify(customerService, times(1)).updateCustomer(isA(Customer.class));
   }
 
+  /**
+   * Test to delete customer api.
+   *
+   * @throws Exception
+   */
   @Test
   void deleteCustomer() throws Exception {
     String customerId = "customerId";
@@ -152,6 +182,11 @@ class CustomerControllerTest {
     verify(customerService, times(1)).deleteCustomer(isA(String.class));
   }
 
+  /**
+   * Test to get total rewards api.
+   *
+   * @throws Exception
+   */
   @Test
   void getCustomerTotalRewards() throws Exception {
     String customerId = "customerId";
@@ -170,6 +205,11 @@ class CustomerControllerTest {
     verify(customerService, times(1)).getCustomerTotalRewards(isA(String.class));
   }
 
+  /**
+   * Test to get month rewards api.
+   *
+   * @throws Exception
+   */
   @Test
   void getCustomerRewardsInAMonth() throws Exception {
     String customerId = "customerId";

@@ -32,8 +32,9 @@ class RewardServiceImplTest {
     MockitoAnnotations.openMocks(this);
   }
 
+  /** Test to get reward using Id. */
   @Test
-  void getRewardByIdCase1() {
+  void getRewardById() {
     String rewardId = "reward-test-id";
     String customerId = "customer-test-id";
     String transactionId = "transaction-test-id";
@@ -58,8 +59,9 @@ class RewardServiceImplTest {
     verify(rewardRepository, times(1)).findByRewardId(isA(String.class));
   }
 
+  /** Test to get reward for a non existing reward id. */
   @Test
-  void getRewardByIdCase2() {
+  void getRewardByIdForNonExistingReward() {
     String rewardId = "reward-test-id";
     Optional<Reward> rewardOptional = Optional.empty();
     when(rewardRepository.findByRewardId(rewardId)).thenReturn(rewardOptional);
@@ -72,6 +74,7 @@ class RewardServiceImplTest {
     verify(rewardRepository, times(1)).findByRewardId(isA(String.class));
   }
 
+  /** Test to all rewards. */
   @Test
   void getAllRewards() {
     String rewardId1 = "reward-test-id";
@@ -90,13 +93,14 @@ class RewardServiceImplTest {
 
     List<Reward> rewardsResult = rewardService.getAllRewards();
     for (Reward reward : rewardsResult) {
-      assertEquals(reward1,reward);
+      assertEquals(reward1, reward);
     }
     verify(rewardRepository, times(1)).findAll();
   }
 
+  /** Test to reward using transaction Id. */
   @Test
-  void getAllRewardByTransactionIdCase1() {
+  void getAllRewardByTransactionId() {
     String rewardId = "reward-test-id";
     String customerId = "customer-test-id";
     String transactionId = "transaction-test-id";
@@ -121,8 +125,9 @@ class RewardServiceImplTest {
     verify(rewardRepository, times(1)).findByTransactionId(isA(String.class));
   }
 
+  /** Test to ger reward for a non existing transaction. */
   @Test
-  void getAllRewardByTransactionIdCase2() {
+  void getAllRewardByTransactionIdForNonExistingTransaction() {
     String transactionId = "transaction-test-id";
     Optional<Reward> rewardOptional = Optional.empty();
     when(rewardRepository.findByTransactionId(transactionId)).thenReturn(rewardOptional);
@@ -135,8 +140,9 @@ class RewardServiceImplTest {
     verify(rewardRepository, times(1)).findByTransactionId(isA(String.class));
   }
 
+  /** Test to get all rewards using customer Id. */
   @Test
-  void getAllRewardsByCustomerIdCase1() {
+  void getAllRewardsByCustomerId() {
     String rewardId1 = "reward-test-id";
     String customerId1 = "customer-test-id";
     String transactionId1 = "transaction-test-id";
@@ -153,13 +159,14 @@ class RewardServiceImplTest {
 
     List<Reward> rewardsResult = rewardService.getAllRewardsByCustomerId(customerId1);
     for (Reward reward : rewardsResult) {
-      assertEquals(reward1,reward);
+      assertEquals(reward1, reward);
     }
     verify(rewardRepository, times(1)).findByCustomerId(isA(String.class));
   }
 
+  /** Test to all rewards for non existing customer Id. */
   @Test
-  void getAllRewardsByCustomerIdCase2() {
+  void getAllRewardsByCustomerIdForNonExistingCustomerId() {
     String customerId1 = "customer-test-id";
     Optional<List<Reward>> rewardsOptional = Optional.empty();
     when(rewardRepository.findByCustomerId(customerId1)).thenReturn(rewardsOptional);

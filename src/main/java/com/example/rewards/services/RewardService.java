@@ -3,7 +3,11 @@ package com.example.rewards.services;
 import com.example.rewards.models.Reward;
 import java.util.List;
 
-/** @author Venkat E */
+/**
+ * Rewared Service Interface
+ *
+ * @author Venkat E
+ */
 public interface RewardService {
 
   /**
