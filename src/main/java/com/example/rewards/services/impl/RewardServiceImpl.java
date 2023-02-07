@@ -10,13 +10,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/** @author Venkat E */
+/**
+ * Reward service implementation.
+ *
+ * @author Venkat E
+ */
 @Service
 @Transactional
 public class RewardServiceImpl implements RewardService {
 
   @Autowired RewardRepository rewardRepository;
 
+  /**
+   * Returns Reward if it exists. Throws ResourceNotFoundException if it does not exist.
+   *
+   * @param rewardId
+   * @return
+   */
   @Override
   public Reward getRewardById(String rewardId) {
     Optional<Reward> rewardDb = rewardRepository.findByRewardId(rewardId);
@@ -27,28 +37,37 @@ public class RewardServiceImpl implements RewardService {
     }
   }
 
+  /** @return */
   @Override
   public List<Reward> getAllRewards() {
     return rewardRepository.findAll();
   }
 
+  /**
+   * @param transactionId
+   * @return
+   */
   @Override
   public Reward getAllRewardByTransactionId(String transactionId) {
     Optional<Reward> rewardDb = rewardRepository.findByTransactionId(transactionId);
-    if(rewardDb.isPresent()) {
+    if (rewardDb.isPresent()) {
       return rewardDb.get();
     } else {
-      throw new ResourceNotFoundException("Reward not found transaction with Id="+transactionId);
+      throw new ResourceNotFoundException("Reward not found transaction with Id=" + transactionId);
     }
   }
 
+  /**
+   * @param customerId
+   * @return
+   */
   @Override
   public List<Reward> getAllRewardsByCustomerId(String customerId) {
     Optional<List<Reward>> rewardsDb = rewardRepository.findByCustomerId(customerId);
-    if(rewardsDb.isPresent()){
+    if (rewardsDb.isPresent()) {
       return rewardsDb.get();
     } else {
-      throw new ResourceNotFoundException("Rewards not found customer with Id="+customerId);
+      throw new ResourceNotFoundException("Rewards not found customer with Id=" + customerId);
     }
   }
 }

@@ -16,29 +16,47 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/** @author Venkat E */
+/**
+ * Controller which handles Transaction api.
+ *
+ * @author Venkat E
+ */
 @RestController
 @RequestMapping("transaction")
 public class TransactionController {
 
   @Autowired TransactionService transactionService;
 
+  /** @return */
   @GetMapping("all")
   public ResponseEntity<List<Transaction>> getAllTransactions() {
     return ResponseEntity.ok().body(transactionService.getAllTransactions());
   }
 
+  /**
+   * @param transactionId
+   * @return
+   */
   @GetMapping("{transactionId}")
   public ResponseEntity<Transaction> getTransactionById(@PathVariable String transactionId) {
     return ResponseEntity.ok().body(transactionService.getTransactionById(transactionId));
   }
 
+  /**
+   * @param transaction
+   * @return
+   */
   @PostMapping
   public ResponseEntity<Transaction> createTransaction(
       @Valid @RequestBody Transaction transaction) {
     return ResponseEntity.ok().body(transactionService.createTransaction(transaction));
   }
 
+  /**
+   * @param transactionId
+   * @param transaction
+   * @return
+   */
   @PutMapping("{transactionId}")
   public ResponseEntity<Transaction> updateTransaction(
       @PathVariable String transactionId, @Valid @RequestBody Transaction transaction) {
@@ -46,6 +64,10 @@ public class TransactionController {
     return ResponseEntity.ok().body(transactionService.updateTransaction(transaction));
   }
 
+  /**
+   * @param transactionId
+   * @return
+   */
   @DeleteMapping("{transactionId}")
   public HttpStatus deleteTransaction(@PathVariable String transactionId) {
     transactionService.deleteTransaction(transactionId);

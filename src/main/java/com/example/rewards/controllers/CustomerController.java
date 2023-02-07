@@ -21,34 +21,57 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/** @author Venkat E */
+/**
+ * Controller which handles customer resource apis.
+ *
+ * @author Venkat E
+ */
 @RestController
 @RequestMapping("customer")
 public class CustomerController {
 
   @Autowired private CustomerService customerService;
 
+  /** @return */
   @GetMapping("all")
   public ResponseEntity<List<Customer>> getAllCustomers() {
     return ResponseEntity.ok().body(customerService.getAllCustomers());
   }
 
+  /**
+   * @param customerId
+   * @return
+   */
   @GetMapping("{customerId}")
   public ResponseEntity<Customer> getCustomerById(@PathVariable String customerId) {
     return ResponseEntity.ok().body(customerService.getCustomerById(customerId));
   }
 
+  /**
+   * @param firstName
+   * @param lastName
+   * @return
+   */
   @GetMapping("")
   public ResponseEntity<Customer> getCustomerByFirstAndLastName(
       @RequestParam @NotBlank String firstName, @RequestParam @NotBlank String lastName) {
     return ResponseEntity.ok().body(customerService.getCustomerByName(firstName, lastName));
   }
 
+  /**
+   * @param customer
+   * @return
+   */
   @PostMapping
   public ResponseEntity<Customer> createCustomer(@Valid @RequestBody Customer customer) {
     return ResponseEntity.ok().body(customerService.createCustomer(customer));
   }
 
+  /**
+   * @param customerId
+   * @param customer
+   * @return
+   */
   @PutMapping("{customerId}")
   public ResponseEntity<Customer> updateCustomer(
       @PathVariable String customerId, @Valid @RequestBody Customer customer) {
@@ -56,18 +79,32 @@ public class CustomerController {
     return ResponseEntity.ok().body(customerService.updateCustomer(customer));
   }
 
+  /**
+   * @param customerId
+   * @return
+   */
   @DeleteMapping("{customerId}")
   public HttpStatus deleteCustomer(@PathVariable String customerId) {
     customerService.deleteCustomer(customerId);
     return HttpStatus.OK;
   }
 
+  /**
+   * @param customerId
+   * @return
+   */
   @GetMapping("total-rewards/{customerId}")
   public ResponseEntity<CustomerTotalRewardsReport> getCustomerTotalRewards(
       @PathVariable String customerId) {
     return ResponseEntity.ok().body(customerService.getCustomerTotalRewards(customerId));
   }
 
+  /**
+   * @param customerId
+   * @param year
+   * @param month
+   * @return
+   */
   @GetMapping("rewards-per-month")
   public ResponseEntity<CustomerRewardsPerMonth> getCustomerRewardsInAMonth(
       @RequestParam @NotBlank String customerId,

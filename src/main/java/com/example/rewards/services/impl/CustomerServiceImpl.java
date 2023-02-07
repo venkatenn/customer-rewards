@@ -17,7 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/** @author Venkat E */
+/**
+ * Customer service implementation.
+ *
+ * @author Venkat E
+ */
 @Service
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
@@ -25,11 +29,19 @@ public class CustomerServiceImpl implements CustomerService {
   @Autowired private CustomerRepository customerRepository;
   @Autowired private RewardRepository rewardRepository;
 
+  /**
+   * @param customer
+   * @return
+   */
   @Override
   public Customer createCustomer(Customer customer) {
     return customerRepository.save(customer);
   }
 
+  /**
+   * @param customer
+   * @return
+   */
   @Override
   public Customer updateCustomer(Customer customer) {
     Optional<Customer> customerDb = customerRepository.findByCustomerId(customer.getCustomerId());
@@ -44,11 +56,18 @@ public class CustomerServiceImpl implements CustomerService {
     }
   }
 
+  /** @return */
   @Override
   public List<Customer> getAllCustomers() {
     return customerRepository.findAll();
   }
 
+  /**
+   * Returns customer if exists. Throws ResourceNotFound exception if customer does not exists.
+   *
+   * @param id
+   * @return
+   */
   @Override
   public Customer getCustomerById(String id) {
     Optional<Customer> customerDb = customerRepository.findByCustomerId(id);
@@ -59,6 +78,13 @@ public class CustomerServiceImpl implements CustomerService {
     }
   }
 
+  /**
+   * Returns customer if exists. Throws ResourceNotFound exception if customer does not exists.
+   *
+   * @param firstName
+   * @param lastName
+   * @return
+   */
   @Override
   public Customer getCustomerByName(String firstName, String lastName) {
     Optional<Customer> customerDb =
@@ -71,16 +97,28 @@ public class CustomerServiceImpl implements CustomerService {
     }
   }
 
+  /**
+   * Deletes customer if exists. Throws ResourceNotFound exception if customer does not exists.
+   *
+   * @param id
+   */
   @Override
   public void deleteCustomer(String id) {
     Optional<Customer> customerDb = customerRepository.findByCustomerId(id);
     if (customerDb.isPresent()) {
       customerRepository.deleteByCustomerId(id);
     } else {
-      throw new ResourceNotFoundException("Customer not found with Id="+id);
+      throw new ResourceNotFoundException("Customer not found with Id=" + id);
     }
   }
 
+  /**
+   * Returns customer total reward points if the customer exists. Throws ResourceNotFound Exception
+   * if customer does not exist.
+   *
+   * @param customerId
+   * @return
+   */
   @Override
   public CustomerTotalRewardsReport getCustomerTotalRewards(String customerId) {
     Optional<Customer> customerDb = customerRepository.findByCustomerId(customerId);
@@ -103,6 +141,15 @@ public class CustomerServiceImpl implements CustomerService {
     }
   }
 
+  /**
+   * Returns customers reward points in a month if customer exists. Throws ResourceNotFound
+   * exception if customer does not exist.
+   *
+   * @param customerId
+   * @param year
+   * @param month
+   * @return
+   */
   @Override
   public CustomerRewardsPerMonth getCustomerRewardsForMonth(
       String customerId, Integer year, Month month) {

@@ -15,15 +15,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/** @author Venkat E */
+/**
+ * Transaction service implementation.
+ *
+ * @author Venkat E
+ */
 @Service
 @Transactional
 public class TransactionServiceImpl implements TransactionService {
-
   @Autowired TransactionRepository transactionRepository;
   @Autowired CustomerRepository customerRepository;
   @Autowired RewardRepository rewardRepository;
 
+  /**
+   * @param transaction
+   * @return
+   */
   @Override
   public Transaction createTransaction(Transaction transaction) {
     // validate if the customer is valid before proceeding.
@@ -49,6 +56,7 @@ public class TransactionServiceImpl implements TransactionService {
     return transactionDb;
   }
 
+  /** @return */
   @Override
   public List<Transaction> getAllTransactions() {
     return transactionRepository.findAll();
@@ -64,19 +72,24 @@ public class TransactionServiceImpl implements TransactionService {
     }
   }
 
+  /**
+   * @param transaction
+   * @return
+   */
   @Override
   public Transaction updateTransaction(Transaction transaction) {
     Optional<Transaction> transactionDb =
         transactionRepository.findByTransactionId(transaction.getTransactionId());
     if (transactionDb.isPresent()) {
-      //Fist try to update reward and bail if we are not able to find corresponding reward
-      Optional<Reward> rewardDb = rewardRepository.findByTransactionId(transaction.getTransactionId());
-      if(rewardDb.isPresent()){
+      // Fist try to update reward and bail if we are not able to find corresponding reward
+      Optional<Reward> rewardDb =
+          rewardRepository.findByTransactionId(transaction.getTransactionId());
+      if (rewardDb.isPresent()) {
         Reward rewardUpdate = rewardDb.get();
         rewardUpdate.setPoints(calculateRewaredAmount(transaction.getAmount()));
         rewardRepository.save(rewardUpdate);
 
-        //Update trasaction
+        // Update trasaction
         Transaction transactionUpdate = transactionDb.get();
         transactionUpdate.setDatetime(transaction.getDatetime());
         transactionUpdate.setCustomerId(transaction.getCustomerId());
@@ -93,23 +106,28 @@ public class TransactionServiceImpl implements TransactionService {
     }
   }
 
+  /** @param transactionId */
   @Override
   public void deleteTransaction(String transactionId) {
     Optional<Transaction> transactionDb = transactionRepository.findByTransactionId(transactionId);
     if (transactionDb.isPresent()) {
-      //First delete the corresponding reward points
+      // First delete the corresponding reward points
       Optional<Reward> rewardDb = rewardRepository.findByTransactionId(transactionId);
-      if(rewardDb.isPresent()){
+      if (rewardDb.isPresent()) {
         rewardRepository.deleteByTransactionId(transactionId);
         transactionRepository.deleteByTransactionId(transactionId);
       } else {
-        throw new ResourceNotFoundException("Reward point not found to delete="+transactionId);
+        throw new ResourceNotFoundException("Reward point not found to delete=" + transactionId);
       }
     } else {
       throw new ResourceNotFoundException("Transaction not found with id=" + transactionId);
     }
   }
 
+  /**
+   * @param transactionAmount
+   * @return
+   */
   public BigDecimal calculateRewaredAmount(BigDecimal transactionAmount) {
     BigDecimal rewardAmount = BigDecimal.ZERO;
     BigDecimal rewardPoint = BigDecimal.ONE;
