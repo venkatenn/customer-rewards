@@ -19,9 +19,9 @@ Models:
 Rest apis are provided for each model to perform crud operations except Rewards. Each added transaction will generate a reward document based on the formula.
 Specific apis are provided to get customer total reward points and reward points accumulated in a specific month.
 
-#### **Application Links: **
+#### **Application Links:**
 A dockeried version of the application is deployed on aws using free tier aws instance and free tier mongo atlas instance.
-Note: exposing the public ip as this is demonstration purpose to play with the apis in swagger. It will be taken dow in few days.
+Note: exposing the public ip as this is demonstration purpose to play with the apis in swagger. It will be taken down in few days.
 * ApiDoc       : http://92.92.92.189:8080/v3/api-docs/
 * Swagger      : http://92.92.92.189:8080/swagger-ui/index.html
 * Actuator     : http://92.92.92.189:8080/actuator
