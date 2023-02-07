@@ -27,7 +27,7 @@ Note: exposing the public ip as this is demonstration purpose to play with the a
 * Actuator     : http://34.207.237.224:8080/actuator
 * Health Check : http://34.207.237.224:8080/actuator/health
 * Metrics      : http://34.207.237.224:8080/actuator/metrics
-* Prometheus end point for scrapping metrics: http://92.92.92.189:8080/actuator/prometheus
+* Prometheus end point for scrapping metrics: http://34.207.237.224:8080/actuator/prometheus
 
 If self deployed:
 * ApiDoc       : http://localhost:8080/v3/api-docs/
