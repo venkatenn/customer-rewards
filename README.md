@@ -65,4 +65,8 @@ Note: hardcoded for demonstration purposes. Generally these are injected at depl
 
 ![Screen Shot 2023-02-06 at 11 55 25 PM](https://user-images.githubusercontent.com/124640067/217152428-aac7d417-f572-43ec-a4af-c26516d58e33.png)
 
+#### **Collections Sample Data**
 
+![Screen Shot 2023-02-07 at 12 21 28 PM](https://user-images.githubusercontent.com/124640067/217320579-3939e5a4-33c3-4782-8711-6e7e1853d976.png)
+![Screen Shot 2023-02-07 at 12 21 55 PM](https://user-images.githubusercontent.com/124640067/217320610-361c52ec-69e8-49f1-a736-4a75ad696216.png)
+![Screen Shot 2023-02-07 at 12 21 44 PM](https://user-images.githubusercontent.com/124640067/217320628-8ce9eb6c-7d52-46e6-8b55-28924687be1c.png)
