@@ -9,7 +9,7 @@ Given a record of every transaction during a three-month period, calculate the r
 earned for each customer per month and total.
 
 #### **Implementaiton Details:**
-The solution is implemented using a simple spring boot app usign gradle and mongodb.
+The solution is implemented using a simple spring boot app using gradle and mongodb.
 
 Models:
 * Customer
@@ -54,7 +54,7 @@ If self deployed:
 * By starting the application you will be able to hit the application on port 8080.
 
 ##### **Docker**
-* Please update hardecoded values in dockerfile with proper mongo config values.
+* Please update hardcoded values in dockerfile with proper mongodb config values.
 Note: hardcoded for demonstration purposes. Generally these are injected at deploy time using some sort of secrets manager.
 * Build the docker image using the following command in application root directory.
 `docker build -t "customer-rewards-001" .`
