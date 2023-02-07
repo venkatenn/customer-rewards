@@ -36,7 +36,7 @@ public class TransactionServiceImpl implements TransactionService {
     // validate if the customer is valid before proceeding.
     Optional<Customer> customerDb =
         customerRepository.findByCustomerId(transaction.getCustomerId());
-    if (!customerDb.isEmpty()) {
+    if (customerDb.isEmpty()) {
       throw new ResourceNotFoundException(
           "Customer not found with Id=" + transaction.getCustomerId());
     }
