@@ -64,6 +64,4 @@ Note: hardcoded for demonstration purposes. Generally these are injected at depl
 #### **Jacoco Code Coverage**
 
 
-
-    
-
+![Screen Shot 2023-02-06 at 11 55 25 PM](https://user-images.githubusercontent.com/124640067/217152428-aac7d417-f572-43ec-a4af-c26516d58e33.png)
