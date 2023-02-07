@@ -22,11 +22,11 @@ Specific apis are provided to get customer total reward points and reward points
 #### **Application Links:**
 A dockeried version of the application is deployed on aws using free tier aws instance and free tier mongo atlas instance.
 Note: exposing the public ip as this is demonstration purpose to play with the apis in swagger. It will be taken down in few days.
-* ApiDoc       : http://100.25.38.187:8080/v3/api-docs/
-* Swagger      : http://100.25.38.187:8080/swagger-ui/index.html
-* Actuator     : http://100.25.38.187:8080/actuator
-* Health Check : http://100.25.38.187:8080/actuator/health
-* Metrics      : http://100.25.38.187:8080/actuator/metrics
+* ApiDoc       : http://34.207.237.224:8080/v3/api-docs/
+* Swagger      : http://34.207.237.224:8080/swagger-ui/index.html
+* Actuator     : http://34.207.237.224:8080/actuator
+* Health Check : http://34.207.237.224:8080/actuator/health
+* Metrics      : http://34.207.237.224:8080/actuator/metrics
 * Prometheus end point for scrapping metrics: http://92.92.92.189:8080/actuator/prometheus
 
 If self deployed:
