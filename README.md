@@ -19,7 +19,7 @@ Models:
 Rest apis are provided for each model to perform crud operations except Rewards. Each added transaction will generate a reward document based on the formula.
 Specific apis are provided to get customer total reward points and reward points accumulated in a specific month.
 
-#### **Application Links:**
+#### **Application Links:** [Terminated after 2 weeks]
 A dockeried version of the application is deployed on aws using free tier aws instance and free tier mongo atlas instance.
 Note: exposing the public ip as this is demonstration purpose to play with the apis in swagger. It will be taken down in few days.
 * ApiDoc       : http://34.207.237.224:8080/v3/api-docs/
@@ -70,3 +70,5 @@ Note: hardcoded for demonstration purposes. Generally these are injected at depl
 ![Screen Shot 2023-02-07 at 12 21 28 PM](https://user-images.githubusercontent.com/124640067/217320579-3939e5a4-33c3-4782-8711-6e7e1853d976.png)
 ![Screen Shot 2023-02-07 at 12 21 55 PM](https://user-images.githubusercontent.com/124640067/217320610-361c52ec-69e8-49f1-a736-4a75ad696216.png)
 ![Screen Shot 2023-02-07 at 12 21 44 PM](https://user-images.githubusercontent.com/124640067/217320628-8ce9eb6c-7d52-46e6-8b55-28924687be1c.png)
+![Screen Shot 2023-02-24 at 1 03 12 PM](https://user-images.githubusercontent.com/124640067/221259943-f2ca5b34-f83f-4ddd-9b27-52a3a79f6f98.png)
+![Screen Shot 2023-02-24 at 1 03 29 PM](https://user-images.githubusercontent.com/124640067/221259969-3b168b05-c585-44f2-87c4-0781da56725f.png)
